@@ -1,0 +1,17 @@
+{
+  "name": "node-react-starter",
+  "version": "1.0.0",
+  "description": "Node React Starter Pack",
+  "main": "index.js",
+  "author": "Tolulope Adetula",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "mongoose": "^5.9.11"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.3"
+  }
+}
