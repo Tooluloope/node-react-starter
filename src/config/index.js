@@ -6,7 +6,7 @@ const baseConfig = {
   isDev: env === 'development',
   isTest: env === 'testing',
   isTest: env === 'production',
-  port: 5000,
+  PORT: 6000,
 }
 
 let envConfig = {}
@@ -28,4 +28,6 @@ switch (env) {
     envConfig = require('./dev').config
 }
 
-export default merge(baseConfig, envConfig)
+const config = merge(baseConfig, envConfig)
+
+export default config;
