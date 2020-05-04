@@ -13,6 +13,7 @@ let envConfig = {}
 
 switch (env) {
   case 'dev':
+    
   case 'development':
     envConfig = require('./dev').config
     break
