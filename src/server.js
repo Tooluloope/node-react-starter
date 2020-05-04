@@ -22,6 +22,7 @@ export const start = async () => {
       console.log(`Server running on http://localhost:${config.PORT}`);
     });
   } catch (e) {
+    
     console.error(e);
   }
 };
