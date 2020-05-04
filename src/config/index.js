@@ -6,7 +6,7 @@ const baseConfig = {
   isDev: env === 'development',
   isTest: env === 'testing',
   isTest: env === 'production',
-  PORT: 1100,
+  PORT: 5000,
 }
 
 let envConfig = {}
