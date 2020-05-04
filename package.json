@@ -7,18 +7,12 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build": "babel src --out-dir dist ",
     "dev": "nodemon --exec yarn restart",
     "restart": "rimraf dist && yarn build && yarn start",
     "start": "node dist/index.js",
-
-    
-    "build": "babel src --out-dir dist && npm run build --prefix client",
-    "dev": "yarn build && concurrently --kill-others-on-fail \"node dist/index.js\" \"npm run serve --prefix client\"",
-    "server": "nodemon --exec yarn compile",
-    "compile": "babel src --out-dir dist && node dist/index.js",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "client": "npm run start --prefix client"
+
   },
   "dependencies": {
     "body-parser": "^1.19.0",

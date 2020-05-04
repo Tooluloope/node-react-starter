@@ -6,11 +6,10 @@ const baseConfig = {
   isDev: env === 'development',
   isTest: env === 'testing',
   isTest: env === 'production',
-  PORT: 6000,
+  PORT: 1100,
 }
 
 let envConfig = {}
-
 switch (env) {
   case 'dev':
     
