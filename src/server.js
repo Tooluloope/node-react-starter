@@ -2,14 +2,16 @@ import express from 'express'
 import { json, urlencoded } from 'body-parser'
 import config from './config'
 import { connect } from "./utils/db"
+import { SignUp, SignIn } from "./utils/auth"
 
 export const app = express()
 
 app.disable('x-powered-by')
-
 app.use(json())
-
 app.use(urlencoded({ extended: true }))
+
+app.post('/signup', SignUp)
+app.post('/signin', SignIn)
 
 
 export const start = async () => {
