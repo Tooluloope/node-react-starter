@@ -1,8 +1,8 @@
-import { User } from './user.model'
+import { User } from "./user.model";
 
 export const me = (req, res) => {
-  res.status(200).json({ data: req.user })
-}
+  res.status(200).json({ data: req.user });
+};
 
 export const updateMe = async (req, res) => {
   try {
@@ -10,11 +10,11 @@ export const updateMe = async (req, res) => {
       new: true
     })
       .lean()
-      .exec()
+      .exec();
 
-    res.status(200).json({ data: user })
+    res.status(200).json({ data: user });
   } catch (e) {
-    console.error(e)
-    res.status(400).end()
+    console.error(e);
+    res.status(400).end();
   }
-}
+};

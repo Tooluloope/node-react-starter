@@ -1,27 +1,27 @@
-import express from 'express'
-import { json, urlencoded } from 'body-parser'
-import config from './config'
-import { connect } from "./utils/db"
-import { SignUp, SignIn } from "./utils/auth"
+import express from "express";
+import { json, urlencoded } from "body-parser";
+import config from "./config";
+import { connect } from "./utils/db";
+import { SignUp, SignIn } from "./utils/auth";
 
-export const app = express()
+export const app = express();
 
-app.disable('x-powered-by')
-app.use(json())
-app.use(urlencoded({ extended: true }))
+app.disable("x-powered-by");
+app.use(json());
+app.use(urlencoded({ extended: true }));
 
-app.post('/signup', SignUp)
-app.post('/signin', SignIn)
+app.post("/signup", SignUp);
+app.post("/signin", SignIn);
 
 
 export const start = async () => {
 
   try {
-    await connect()
+    await connect();
     app.listen(config.PORT, () => {
-      console.log(`Server running on http://localhost:${config.PORT}`)
-    })
+      console.log(`Server running on http://localhost:${config.PORT}`);
+    });
   } catch (e) {
-    console.error(e)
+    console.error(e);
   }
-}
+};
