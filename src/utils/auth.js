@@ -7,6 +7,7 @@ export const SignUp = async (req, res) => {
         return res.status(400).send({ message: "All Fields are required" });
     }
     try {
+        
         const user = await User.create(req.body);
         const token =  user.generateJWT();
         return res.status(201).send({ token });
@@ -21,6 +22,7 @@ export const SignUp = async (req, res) => {
 
 export const SignIn = async (req, res) => {
     const { email, password} = req.body;
+    console.log(req.body);
     if (!email || !password ) {
         return res.status(400).send({ message: "All Fields are required" });
     }

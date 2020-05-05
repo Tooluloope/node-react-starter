@@ -2,11 +2,13 @@ import express from "express";
 import { json, urlencoded } from "body-parser";
 import config from "./config";
 import { connect } from "./utils/db";
+import cors from "cors";
 import { SignUp, SignIn } from "./utils/auth";
 
 export const app = express();
 
 app.disable("x-powered-by");
+app.use(cors());
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
