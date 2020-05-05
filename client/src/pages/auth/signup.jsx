@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import phone  from "../../assets/undraw_personalization_triu.svg";
 import wave  from "../../assets/wave.png";
 import profile  from "../../assets/undraw_profile_pic_ic5t.svg";
@@ -6,6 +6,7 @@ import "./auth.css";
 import { Input, ButtonAuth } from "../../components/inputs/input";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { userContext } from "../../states/auth/auth.context";
 
 
 
@@ -22,58 +23,63 @@ export const SignUp = () => {
         errors: {},
         submitted: false
     };
-    const [state, setState] = useState(initialState);
+    const [data, setData] = useState(initialState);
+    
+    const {dispatch} = useContext(userContext);
     
 
 
     const handleChange = event => {
-        const { user } = state;
+        const { user } = data;
         user[event.target.name] = event.target.value;
-        setState({...state, user});
+        setData({...data, user});
     };
     const onSubmit = async (event) => {
         event.preventDefault();
-        const { user: { username, password, fullname, email, password2 }} = state;
+        const { user: { username, password, fullname, email, password2 }} = data;
 
 
         if (!username || !password || !fullname || !email || !password2) {
             errors.message = "All fields are required";
-            setState({...state, errors});
+            setData({...data, errors});
             return;
         }
 
         if (password.length < 8) {
             errors.message = "Password must be at least 8 characters!";
-            setState({...state, errors});
+            setData({...data, errors});
             return;
         }
 
         if (password !== password2) {
             errors.message = "Both Passwords must be the same";
-            setState({...state, errors});
+            setData({...data, errors});
             return;
         }
 
         try {
-            const res = await axios.post("http://localhost:5000/signup", state.user );
+            const res = await axios.post("http://localhost:5000/signup", data.user );
             const status = res.status;
             const result = await res.data;
 
             if (status === 200 | status === 201) {
-                localStorage.setItem("token",result.token);
+                dispatch({type: "REGISTER_SUCCESS", payload: result});
+                setData({...initialState, submitted: true});
 
-                setState({...initialState, submitted: true});
             }
             else {
-                setState({...state, errors:{message : result.toString()}});
+                dispatch({type: "REGISTER_FAIL"});
+                setData({...data, errors:{message : result.toString()}});
             }
         } catch (error) {
-            setState({...state, errors:{message : error.toString()}});
+            dispatch({type: "REGISTER_FAIL"});
+            setData({...data, errors:{message : error.toString()}});
+
         }
 
     };
 
-    const {submitted, errors, user: { username, password, fullname, email, password2 }} = state;
+    const {submitted, errors, user: { username, password, fullname, email, password2 }} = data;
     
     return(
     <>

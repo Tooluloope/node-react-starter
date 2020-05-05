@@ -6,11 +6,14 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "@fortawesome/fontawesome-free/css/all.css";
+import { User } from "./states/auth/auth.context";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <User>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </User>,
   document.getElementById("root")
 );
 

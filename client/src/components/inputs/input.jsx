@@ -10,7 +10,7 @@ export const ButtonAuth = ({value, className, type,handleClick } ) => {
     );
 };
 
-export const Input = ({name, label, type, icon, onChange, value, error}) => {
+export const Input = ({name, label, type, icon, onChange, value}) => {
   
     return(
        
@@ -37,7 +37,6 @@ Input.propTypes = {
     type: PropTypes.oneOf(["text", "number", "password"]),
     icon: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    error: PropTypes.string,
 };
 
 ButtonAuth.propTypes = {
