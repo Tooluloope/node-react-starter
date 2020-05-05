@@ -68,3 +68,43 @@
 .input-div.focus > i{
 	color: #38d39f;
 }
+
+@media screen and (max-width: 1050px){
+	.contain{
+		grid-gap: 5rem;
+	}
+}
+
+@media screen and (max-width: 1000px){
+	.contain form{
+		width: 290px !important;
+	}
+
+	.contain h2{
+        font-size: 2.4rem;
+        margin: 8px 0;
+	}
+	.contain .img img{
+		width: 400px;
+	}
+
+	
+}
+
+@media screen and (max-width: 900px){
+	.contain{
+		grid-template-columns: 1fr;
+	}
+
+	.contain .img{
+		display: none;
+	}
+
+	.wave{
+		display: none;
+	}
+
+	.contain .content{
+		justify-content: center;
+	}
+}
