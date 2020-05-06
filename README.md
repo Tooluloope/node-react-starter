@@ -10,9 +10,9 @@ List of Fucntionalities.
 
 4. Eslint and Prettier
 
-5.Proptype checking
+5. Proptype checking
 
-6.Login and Signup Interfaces
+6. Login and Signup Interfaces
 
 
 
