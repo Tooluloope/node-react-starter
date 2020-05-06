@@ -14,5 +14,7 @@ List of Fucntionalities.
 
 6. Login and Signup Interfaces
 
+7. Babel for bundling ES6 on nodejs
+
 
 
