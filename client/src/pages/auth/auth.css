@@ -29,7 +29,7 @@
 .input-div.focus:before, .input-div.focus:after{
 	width: 50%;
 }
-.input-div > div > h5{
+.input-div > div > label{
 	position: absolute;
 	left: 10px;
 	top: 50%;
@@ -38,7 +38,7 @@
 	transition: .3s;
 }
 
-.input-div.focus > div > h5{
+.input-div.focus > div > label{
 	top: -5px;
 	font-size: 15px;
 }

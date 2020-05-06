@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 export const ButtonAuth = ({value, className, type,handleClick } ) => {
 
     return(
+        
         <input  style={{borderRadius: "25px"}} type={type} className={className}  onClick={handleClick} value={value}></input>
     );
 };
@@ -21,8 +22,8 @@ export const Input = ({name, label, type, icon, onChange, value}) => {
                     <i className={`fas fa-${icon} duration-1000`}></i>
                 </div>
                 <div className="justify-center relative h-12">
-                    <h5  className='text-gray-600 text-lg absolute duration-1000'>{label}</h5>
-                    <input onChange={onChange} value = {value} name = {name} type={type} className="input" />
+                    <label className='text-gray-600 text-lg absolute duration-1000' htmlFor={name}>{label}</label>
+                    <input id={name} onChange={onChange} value = {value} name = {name} type={type} className="input" />
                 </div>
             </div>
         </>
