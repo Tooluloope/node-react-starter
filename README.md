@@ -16,5 +16,21 @@ List of Fucntionalities.
 
 7. Babel for bundling ES6 on nodejs
 
+8. MongoDB connected
+
+
+## To be Done
+
+1. Testing both Frontend and Backend
+
+2. DB Agnostic
+
+3. Refactoring for cleaner code
+
+4.
+
+
+
+
 
 
