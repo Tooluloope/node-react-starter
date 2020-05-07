@@ -17,6 +17,7 @@ const reducer = (state, action) => {
     switch (type) {
           case "LOGOUT_SUCCESS":
             localStorage.removeItem("token");
+            localStorage.removeItem("isAuthenticated", JSON.stringify(false));
             return {
               ...state,
               isAuthenticated: false,
@@ -24,6 +25,7 @@ const reducer = (state, action) => {
             };
         case "LOGIN_SUCCESS":
           localStorage.setItem("token", payload.token);
+          localStorage.setItem("isAuthenticated", JSON.stringify(true));
           return {
             ...state,
             user: payload.user,
@@ -32,6 +34,7 @@ const reducer = (state, action) => {
           };
           case "REGISTER_SUCCESS":
           localStorage.setItem("token", payload.token);
+          localStorage.setItem("isAuthenticated", JSON.stringify(true));
           return {
             ...state,
             user: payload.user,
@@ -43,6 +46,7 @@ const reducer = (state, action) => {
         case "LOGIN_FAIL":
             
           localStorage.removeItem("token");
+          localStorage.removeItem("isAuthenticated", JSON.stringify(false));
           return {
             ...state,
             isAuthenticated: false,

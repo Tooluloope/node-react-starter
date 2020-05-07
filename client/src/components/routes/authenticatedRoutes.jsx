@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 
 

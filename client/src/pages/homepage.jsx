@@ -1,4 +1,7 @@
 import React from "react";
+import { NavBar } from "../components/navbar/navbar";
 
 
-export const Home = () => <div>Home Page</div>;
+export const Home = () =>(
+    <NavBar />
+);
