@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import logo from "../../logo.svg";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -8,8 +8,19 @@ import { userContext } from "../../states/auth/auth.context";
 
 export const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [fullname, setFullname] = useState(false);
+
     const  isAuthenticated  = useAuth();
-    const {dispatch} = useContext(userContext);
+    const {state: {user}, dispatch} = useContext(userContext);
+
+    
+    useEffect(() => {
+        if (user) {
+            setFullname(user.fullname);
+        }
+        
+        
+    }, [user]);
 
     const Logout = () => {    
         dispatch({
@@ -39,6 +50,8 @@ export const NavBar = () => {
                 { isAuthenticated && <Link onClick = {() => Logout()} className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/login'>logout </Link>}
                 { !isAuthenticated && <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/login'>Login </Link>}
                 { !isAuthenticated && <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/signup'>Sign Up </Link>}
+                { isAuthenticated && <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/signup'>{fullname ? fullname : null} </Link>}
+
 
             </nav>
 

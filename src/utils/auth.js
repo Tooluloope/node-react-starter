@@ -1,4 +1,17 @@
 import { User } from "../resources/user/user.model";
+import jwt from "jsonwebtoken";
+import { config } from "../config/dev";
+
+
+
+  
+  export const verifyToken = token =>
+    new Promise((resolve, reject) => {
+      jwt.verify(token, config.secrets.jwt, (err, payload) => {
+        if (err) return reject(err);
+        resolve(payload);
+      });
+    });
 
 
 export const SignUp = async (req, res) => {
@@ -40,3 +53,25 @@ export const SignIn = async (req, res) => {
         return res.status(500).end("Error validating user");
     }
 };
+
+export const getUser = async (req, res) => {
+    const token = req.token;
+    let payload;
+    try {
+      payload = await verifyToken(token);
+    } catch (e) {
+      return res.status(401).end();
+    }
+  
+    const user = await User.findById(payload.id)
+      .select("-password")
+      .lean()
+      .exec();
+  
+    if (!user) {
+      return res.status(401).end();
+    }
+  
+    return res.status(201).json({ user });
+  };
+  
